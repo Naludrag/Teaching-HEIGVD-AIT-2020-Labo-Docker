@@ -80,12 +80,18 @@ https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 ### Task 1 : Identify issues and install the tools
 
 #### 1.1
-
+<img alt="Test 1" src="./screens/T1_s1.png">
 #### 1.2
+In this task we installed a init system to be able to execute multiple process in a docker container. The basic idea of Docker is to run one process per container but with S6 we can manage and supervise multiple processes. With S6 we can choose which process to restart to never let a container die. We could also choose which process if they die shut down the container.
+With this service we do not have "one process per container" but more "one thing per container".
+
+Docker containers have to run a foreground process to be kept alive. And so, S6 will run as the foreground process and let teh other processes run as background process. With that, if a process fail the container will not die.
+
+In our laboratory it will be interesting to have such a tool because we could restart the haproxy process to have the update the init script to add new servers.
 
 ### Difficulties
 #### Task 1
-
+In this task no difficulties were encountered.
 
 ### Conclusion
 To conclude, we found this laboratory interesting because we could practice the theory seen in the course. It was also interesting to see what can happen if a load-balancer has a slower server or if the session stickiness is not enabled. Seeing multiple balancing strategies and to choose between them is also an interesting point in the laboratory.
