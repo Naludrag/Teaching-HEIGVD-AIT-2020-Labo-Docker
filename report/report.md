@@ -10,8 +10,55 @@ In this laboratory, we will configure a load-balancer with different configurati
 
 ### Task 0 : Identify issues and install the tools
 #### M1 : Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?
+The main problem will be that we will use the same amount of servers every time of the year. For instance, we could have something more intelligent that will create a new server when we have a lot of incoming requests and shut down some servers when there is not much work to do.
 
 #### M2 : Describe what you need to do to add new webapp container to the infrastructure. Give the exact steps of what you have to do without modifiying the way the things are done.
+For that you will have to go in the docker compose file and add the following lines :
+```
+webapp3:
+       container_name: ${WEBAPP_3_NAME}
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: ${WEBAPP_3_IP}
+       ports:
+         - "4002:3000"
+       environment:
+            - TAG=${WEBAPP_3_NAME}
+            - SERVER_IP=${WEBAPP_3_IP}
+haproxy:
+       container_name: ha
+       build:
+         context: ./ha
+         dockerfile: Dockerfile
+       ports:
+         - 80:80
+         - 1936:1936
+         - 9999:9999
+       expose:
+         - 80
+         - 1936
+         - 9999
+       networks:
+         heig:
+           ipv4_address: ${HA_PROXY_IP}
+       environment:
+            - WEBAPP_1_IP=${WEBAPP_1_IP}
+            - WEBAPP_2_IP=${WEBAPP_2_IP}
+            - WEBAPP_3_IP=${WEBAPP_3_IP}
+```
+
+And then in the haproxy file :
+
+```
+# Define the list of nodes to be in the balancing mechanism
+# http://cbonte.github.io/haproxy-dconv/2.2/configuration.html#4-server
+server s1 ${WEBAPP_1_IP}:3000 check
+server s2 ${WEBAPP_2_IP}:3000 check
+server s3 ${WEBAPP_3_IP}:3000 check
+```
 
 #### M3 : Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.
 
