@@ -81,6 +81,9 @@ https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 
 #### 1.1
 <img alt="Test 1" src="./screens/T1_s1.png">
+
+We can see that this task has been done successfully.
+
 #### 1.2
 In this task we installed a init system to be able to execute multiple process in a docker container. The basic idea of Docker is to run one process per container but with S6 we can manage and supervise multiple processes. With S6 we can choose which process to restart to never let a container die. We could also choose which process if they die shut down the container.
 With this service we do not have "one process per container" but more "one thing per container".
