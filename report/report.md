@@ -13,7 +13,7 @@ In this laboratory, we will configure a load-balancer with different configurati
 The main problem will be that we will use the same amount of servers every time of the year. For instance, we could have something more intelligent that will create a new server when we have a lot of incoming requests and shut down some servers when there is not much work to do.
 
 #### M2 : Describe what you need to do to add new webapp container to the infrastructure. Give the exact steps of what you have to do without modifiying the way the things are done.
-For that you will have to go in the docker compose file and add the following lines :
+To add a new container, first, we will have to go in the docker compose file and add the following lines :
 ```
 webapp3:
        container_name: ${WEBAPP_3_NAME}
@@ -61,6 +61,7 @@ server s3 ${WEBAPP_3_IP}:3000 check
 ```
 
 #### M3 : Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.
+A better approach will be to use a script to create a new container when necessary and update the load-balancer to add the new server in the network.
 
 #### M4 : You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?
 
@@ -77,6 +78,14 @@ Here is our URL :
 https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 
 ### Task 1 : Identify issues and install the tools
+
+#### 1.1
+
+#### 1.2
+
+### Difficulties
+#### Task 1
+
 
 ### Conclusion
 To conclude, we found this laboratory interesting because we could practice the theory seen in the course. It was also interesting to see what can happen if a load-balancer has a slower server or if the session stickiness is not enabled. Seeing multiple balancing strategies and to choose between them is also an interesting point in the laboratory.
