@@ -92,6 +92,8 @@ Docker containers have to run a foreground process to be kept alive. And so, S6 
 
 In our laboratory it will be interesting to have such a tool because we could restart the haproxy process to have the update the init script to add new servers.
 
+### Task 2 : Add a tool to manage membership in the web server cluster
+
 ### Difficulties
 #### Task 1
 In this task no difficulties were encountered.
