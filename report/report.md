@@ -96,9 +96,9 @@ In our laboratory it will be interesting to have such a tool because we could re
 
 #### 2.1
 All the logs for this point are in the folder logs but here is the link to the files :
-- [HAProxy](./logs/task%202/ha.log)
-- [S1](./logs/task%202/s1.log)
-- [S2](./logs/task%202/s2.log)
+- [HAProxy](/logs/task%202/ha.log)
+- [S1](/logs/task%202/s1.log)
+- [S2](/logs/task%202/s2.log)
 
 #### 2.2
 In the current solution we could have a problem because all the nodes have to be registered through the HAProxy. Because of that, if the HAProxy is not up new machines could not join the cluster and that is not what the Serf mind set is for.
@@ -120,14 +120,14 @@ If we want to find other solutions than Serf we could use for instance ZooKeeper
 
 #### 3.1
 Here are the logs for this step :
-- [HAProxy](./logs/task%203/ha.log)
-- [S1](./logs/task%203/s1.log)
-- [S2](./logs/task%203/s2.log)
-- [HAProxy with nodes](./logs/task%203/ha_nodes.log)
+- [HAProxy](/logs/task%203/ha.log)
+- [S1](/logs/task%203/s1.log)
+- [S2](/logs/task%203/s2.log)
+- [HAProxy with nodes](/logs/task%203/ha_nodes.log)
 
 #### 3.2
 The logs of the serf.log file can be seen with the link below:
-- [HAProxy](./logs/task%203/serf.log)
+- [HAProxy](/logs/task%203/serf.log)
 
 ### Difficulties
 #### Task 1
