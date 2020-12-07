@@ -114,7 +114,9 @@ If a new node has joined the cluster or if it leave the cluster, Serf will use t
 
 This messages are always sent with a Lamport clock to maintain some notion of messages ordering.
 
-If we want to find other solutions than Serf we could use for instance ZooKeeper or doozerd. But in some cases this solutions can be less interesting as for instance ZooKeeper. ZooKeeper cannot be used as a tool and a lot of the times developpers have to use libraries to build features that the need. 
+If we want to find other solutions than Serf we could use for instance ZooKeeper or doozerd. But in some cases this solutions can be less interesting as for instance ZooKeeper. ZooKeeper cannot be used as a tool and a lot of the times developers have to use libraries to build features that the need.
+
+### Task 3 : React to membership changes
 
 ### Difficulties
 #### Task 1
