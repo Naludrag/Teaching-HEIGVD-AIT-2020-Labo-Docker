@@ -118,11 +118,25 @@ If we want to find other solutions than Serf we could use for instance ZooKeeper
 
 ### Task 3 : React to membership changes
 
+#### 3.1
+Here are the logs for this step :
+- [HAProxy](./logs/task%203/ha.log)
+- [S1](./logs/task%203/s1.log)
+- [S2](./logs/task%203/s2.log)
+- [HAProxy with nodes](./logs/task%203/ha_nodes.log)
+
+#### 3.2
+The logs of the serf.log file can be seen with the link below:
+- [HAProxy](./logs/task%203/serf.log)
+
 ### Difficulties
 #### Task 1
 In this task no difficulties were encountered.
 
 #### Task 2
+In this task no difficulties were encountered.
+
+#### Task 3
 In this task no difficulties were encountered.
 
 ### Conclusion
