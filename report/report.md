@@ -94,8 +94,33 @@ In our laboratory it will be interesting to have such a tool because we could re
 
 ### Task 2 : Add a tool to manage membership in the web server cluster
 
+#### 2.1
+All the logs for this point are in the folder logs but here is the link to the files :
+- [HAProxy](./logs/task%202/ha.log)
+- [S1](./logs/task%202/s1.log)
+- [S2](./logs/task%202/s2.log)
+
+#### 2.2
+In the current solution we could have a problem because all the nodes have to be registered through the HAProxy. Because of that, if the HAProxy is not up new machines could not join the cluster and that is not what the Serf mind set is for.
+
+The Serf mind set is to join a cluster through multiple machines and not only one.
+
+#### 2.3
+The Serf agent will try to join the cluster trough the load-balancer. If the cluster is not created it will create it and in reverse if it exists it will join it. But this step will only succeed if the ha container is accessible if not the startup of the Serf agent will fail.
+
+If a new node has joined the cluster or if it leave the cluster, Serf will use the gossip protocol to tell other nodes that about this information. This protocol is based on SWIM protocol and serf sends custom messages types on top of this layer. Two messages in particular are often used :
+- Join Intent :  This message is sent to tell the nodes that a new machine is now in the cluster.
+- Leave Intent : This message is sent when a server gracefully exit the cluster. If a server fail no Leave Intent is sent and so with this message the Serf layer can know if a server has stopped gracefully or not.
+
+This messages are always sent with a Lamport clock to maintain some notion of messages ordering.
+
+If we want to find other solutions than Serf we could use for instance ZooKeeper or doozerd. But in some cases this solutions can be less interesting as for instance ZooKeeper. ZooKeeper cannot be used as a tool and a lot of the times developpers have to use libraries to build features that the need. 
+
 ### Difficulties
 #### Task 1
+In this task no difficulties were encountered.
+
+#### Task 2
 In this task no difficulties were encountered.
 
 ### Conclusion

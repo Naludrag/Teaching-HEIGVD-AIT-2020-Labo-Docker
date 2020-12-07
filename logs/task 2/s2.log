@@ -1,0 +1,56 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --tag role=backend
+[services.d] done.
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '5822ada09b8a'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: false)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2020/12/07 10:16:48 [INFO] agent: Serf agent starting
+    2020/12/07 10:16:48 [INFO] serf: EventMemberJoin: 5822ada09b8a 192.168.42.22
+    2020/12/07 10:16:48 [INFO] agent: joining: [ha] replay: false
+    2020/12/07 10:16:48 [INFO] serf: EventMemberJoin: 16ca70838695 192.168.42.42
+    2020/12/07 10:16:48 [INFO] agent: joined: 1 nodes
+    2020/12/07 10:16:48 [INFO] serf: EventMemberJoin: d38a324f6b81 192.168.42.11
+Application started
+[0mHEAD / [32m200 [0m7.839 ms - 129[0m
+    2020/12/07 10:16:49 [INFO] agent: Received event: member-join
+[0mHEAD / [32m200 [0m1.173 ms - 129[0m
+[0mHEAD / [32m200 [0m0.870 ms - 129[0m
+[0mHEAD / [32m200 [0m0.829 ms - 129[0m
+[0mHEAD / [32m200 [0m3.257 ms - 129[0m
+[0mHEAD / [32m200 [0m1.507 ms - 129[0m
+[0mHEAD / [32m200 [0m2.437 ms - 129[0m
+[0mHEAD / [32m200 [0m4.178 ms - 129[0m
+[0mHEAD / [32m200 [0m1.454 ms - 129[0m
+[0mHEAD / [32m200 [0m1.765 ms - 129[0m
+[0mHEAD / [32m200 [0m3.040 ms - 129[0m
+==> Caught signal: interrupt
+==> Gracefully shutting down agent...
+    2020/12/07 10:17:11 [INFO] agent: requesting graceful leave from Serf
+[cont-finish.d] executing container finish scripts...
+[cont-finish.d] done.
+[s6-finish] waiting for services.
+    2020/12/07 10:17:11 [INFO] serf: EventMemberLeave: 5822ada09b8a 192.168.42.22
+[0mHEAD / [32m200 [0m0.723 ms - 129[0m
+[s6-finish] sending all processes the TERM signal.
+    2020/12/07 10:17:11 [INFO] agent: requesting serf shutdown
+    2020/12/07 10:17:11 [WARN] serf: Shutdown without a Leave
+    2020/12/07 10:17:11 [INFO] agent: shutdown complete
+[s6-finish] sending all processes the KILL signal and exiting.
