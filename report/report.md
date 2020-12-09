@@ -10,7 +10,7 @@ In this laboratory, we will configure a load-balancer with different configurati
 
 ### Task 0 : Identify issues and install the tools
 #### M1 : Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?
-The main problem will be that we will use the same amount of servers every time of the year. For instance, we could have something more intelligent that will create a new server when we have a lot of incoming requests and shut down some servers when there is not much work to do.
+The main problem will be that we will use the same amount of servers every time of the year. For instance, we could have something more intelligent that will create a new server when we have a lot of incoming requests and shut down some servers when there is not much work to do. Currently all the servers in the infrastructure are static and we have defined the amount of servers desired, two s1 and s2.
 
 #### M2 : Describe what you need to do to add new webapp container to the infrastructure. Give the exact steps of what you have to do without modifiying the way the things are done.
 To add a new container, first, we will have to go in the docker compose file and add the following lines :
@@ -61,17 +61,25 @@ server s3 ${WEBAPP_3_IP}:3000 check
 ```
 
 #### M3 : Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.
-A better approach will be to use a script to create a new container when necessary and update the load-balancer to add the new server in the network.
+As shown in the previous answer the configuration of a new node is relatively long. A better approach will be to use a script to create a new container when necessary and update the load-balancer to add the new server in the network. We could think of a that will automatically repeat the steps above or use a service that can do that for us.
 
 #### M4 : You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?
 
+We could think, as discussed in the previous question, of a application or service that will handle the new hosts and send their arriving or the fact that they are leaving to the load-balancer.
+
 #### M5 : Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?
+No the current solution does not allow a container to handle multiple process. This is because Docker has define that a container is a process and so only one process can be run by a container.
+
+To reach the goal of running multiple processes we can add to the container a process supervisor. This process will handle multiple inside a container and with that we can define which process could kill the container if he fail or the one's that does not kill the container. You will see later in the lab a process supervisor named `S6`.
 
 #### M6 : What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?
+We could think of a solution where we use a template for a node and use a script to change the configuration of the haproxy container directly.
 
 
 #### 0.1
 <img alt="Test 1" src="./screens/T0_s1.png">
+
+On the screenshot shown above we can see the 2 nodes that were started s1 and s2
 
 #### 0.2
 Here is our URL :
@@ -82,13 +90,13 @@ https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 #### 1.1
 <img alt="Test 1" src="./screens/T1_s1.png">
 
-We can see that this task has been done successfully.
+We can see that this task has been done successfully. The 2 nodes are still visible and the haproxy accessible.
 
 #### 1.2
-In this task we installed a init system to be able to execute multiple process in a docker container. The basic idea of Docker is to run one process per container but with S6 we can manage and supervise multiple processes. With S6 we can choose which process to restart to never let a container die. We could also choose which process if they die shut down the container.
+In this task we installed a init system to be able to execute multiple process in a docker container. The basic idea of Docker is to run one process per container but with S6 we can manage and supervise multiple processes. With S6 we can choose which process to restart and we can never let our container die. We could also choose which process, if they die, shut down the container.
 With this service we do not have "one process per container" but more "one thing per container".
 
-Docker containers have to run a foreground process to be kept alive. And so, S6 will run as the foreground process and let teh other processes run as background process. With that, if a process fail the container will not die.
+Docker containers have to run a foreground process to be kept alive. And so, S6 will run as the foreground process and let the other processes run as background process. With that, if a process fail the container will not die.
 
 In our laboratory it will be interesting to have such a tool because we could restart the haproxy process to have the update the init script to add new servers.
 
