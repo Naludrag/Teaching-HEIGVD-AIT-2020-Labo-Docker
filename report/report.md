@@ -140,24 +140,24 @@ The logs of the serf.log file can be seen with the link below:
 ### Task 4: Use a template engine to easily generate configuration files
 
 #### 4.1
-[- Flattening docker images ](https://l10nn.medium.com/flattening-docker-images-bafb849912ff)
-[- Squashing docker images](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
-[- Slim down docker images ](https://blog.codacy.com/five-ways-to-slim-your-docker-images/)
-[- Docker images layers](https://docs.docker.com/storage/storagedriver/)
+[Flattening docker images ](https://l10nn.medium.com/flattening-docker-images-bafb849912ff)
+[Squashing docker images](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
+[Slim down docker images ](https://blog.codacy.com/five-ways-to-slim-your-docker-images/)
+[Docker images layers](https://docs.docker.com/storage/storagedriver/)
 
 #### 4.2
 Use the shared  files and layers  between these images.
 #### 4.3
 The /tmp/haproxy.cfg generated file :
-- [ha](../logs/task 4/haproxy_ha.cfg)
-- [s1](../logs/task 4/haproxy_s1.cfg)
-- [s2](../logs/task 4/haproxy_s2.cfg)
+- [ha](../logs/task%204/haproxy_ha.cfg)
+- [s1](../logs/task%204/haproxy_s1.cfg)
+- [s2](../logs/task%204/haproxy_s2.cfg)
 Docker ps :
 - [Docker ps](../logs/task 4/Docker_ps.log)
 Docker inspect:
-- [ha](../logs/task 4/Docker_insp_ha.log)
-- [s1](../logs/task 4/Docker_insp_s1.log)
-- [s2](../logs/task 4/Docker_insp_s2.log)
+- [ha](../logs/task%204/Docker_insp_ha.log)
+- [s1](../logs/task%204/Docker_insp_s1.log)
+- [s2](../logs/task%204/Docker_insp_s2.log)
 
 #### 4.4
 The containers use an overlay2 storage driver. When an existing file in a container is modified, the storage driver performs a copy-on-write operation. The specifics steps involved depend on the specific storage driver.
