@@ -152,8 +152,10 @@ The /tmp/haproxy.cfg generated file :
 - [ha](../logs/task%204/haproxy_ha.cfg)
 - [s1](../logs/task%204/haproxy_s1.cfg)
 - [s2](../logs/task%204/haproxy_s2.cfg)
+
 Docker ps :
 - [Docker ps](../logs/task%204/Docker_ps.log)
+
 Docker inspect:
 - [ha](../logs/task%204/Docker_insp_ha.log)
 - [s1](../logs/task%204/Docker_insp_s1.log)
