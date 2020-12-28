@@ -165,6 +165,36 @@ Docker inspect:
 The containers use an overlay2 storage driver. When an existing file in a container is modified, the storage driver performs a copy-on-write operation. The specifics steps involved depend on the specific storage driver.
 need more.
 
+### Task 5 : Generate a new load balancer configuration when membership changes
+
+#### 5.1
+Here are the config files for the different steps :
+- [No nodes](./logs/task%205/haproxy_nodes.cfg)
+- [Only s1](./logs/task%205/haproxy_onlys1.cfg)
+- [All the nodes](./logs/task%205/haproxy_nodes.cfg)
+
+Here are the files for the `docker inspect` :
+- [HA inspect](./logs/task%205/docker_inspect_ha.log)
+- [S1 inspect](./logs/task%205/docker_inspect_s1.log)
+- [S2 inspect](./logs/task%205/docker_inspect_s2.log)
+
+And here is the link to the `docker ps` command :
+- [Docker ps](./logs/task%205/docker_ps.log)
+
+#### 5.2
+Here is the log file for the `/nodes` folder :
+- [HA inspect](./logs/task%205/nodes_folder.log)
+
+#### 5.3
+Here is the log file for the `/nodes` folder :
+- [HA inspect](./logs/task%205/nodes_folder_without_s1.log)
+
+Here is the result of the configuration file :
+- [Config file without s1](./logs/task%205/haproxy_without_s1.cfg)
+
+Finally, here is the output of the `docker ps` command :
+- [Config file without s1](./logs/task%205/docker_ps_without_s1.log)
+
 ### Difficulties
 #### Task 1
 In this task no difficulties were encountered.
@@ -173,6 +203,9 @@ In this task no difficulties were encountered.
 In this task no difficulties were encountered.
 
 #### Task 3
+In this task no difficulties were encountered.
+
+#### Task 5
 In this task no difficulties were encountered.
 
 ### Conclusion
