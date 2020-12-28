@@ -104,9 +104,9 @@ In our laboratory, it will be interesting to have such a tool because we could r
 
 #### 2.1
 All the logs for this point are in the folder logs but here is the link to the files :
-- [HAProxy](./logs/task%202/ha.log)
-- [S1](./logs/task%202/s1.log)
-- [S2](./logs/task%202/s2.log)
+- [HAProxy](../logs/task%202/ha.log)
+- [S1](../logs/task%202/s1.log)
+- [S2](../logs/task%202/s2.log)
 
 #### 2.2
 In the current solution we could have a problem because all the nodes have to be registered through the HAProxy. Because of that, if the HAProxy is not up new machines could not join the cluster and that is not what the Serf mind set is for.
@@ -128,14 +128,14 @@ If we want to find other solutions than Serf we could use for instance ZooKeeper
 
 #### 3.1
 Here are the logs for this step :
-- [HAProxy](./logs/task%203/ha.log)
-- [S1](./logs/task%203/s1.log)
-- [S2](./logs/task%203/s2.log)
-- [HAProxy with nodes](./logs/task%203/ha_nodes.log)
+- [HAProxy](../logs/task%203/ha.log)
+- [S1](../logs/task%203/s1.log)
+- [S2](../logs/task%203/s2.log)
+- [HAProxy with nodes](../logs/task%203/ha_nodes.log)
 
 #### 3.2
 The logs of the serf.log file can be seen with the link below:
-- [HAProxy](./logs/task%203/serf.log)
+- [HAProxy](../logs/task%203/serf.log)
 
 ### Task 4: Use a template engine to easily generate configuration files
 
@@ -169,31 +169,31 @@ need more.
 
 #### 5.1
 Here are the config files for the different steps :
-- [No nodes](./logs/task%205/haproxy_nodes.cfg)
-- [Only s1](./logs/task%205/haproxy_onlys1.cfg)
-- [All the nodes](./logs/task%205/haproxy_nodes.cfg)
+- [No nodes](../logs/task%205/haproxy_nodes.cfg)
+- [Only s1](../logs/task%205/haproxy_onlys1.cfg)
+- [All the nodes](../logs/task%205/haproxy_nodes.cfg)
 
 Here are the files for the `docker inspect` :
-- [HA inspect](./logs/task%205/docker_inspect_ha.log)
-- [S1 inspect](./logs/task%205/docker_inspect_s1.log)
-- [S2 inspect](./logs/task%205/docker_inspect_s2.log)
+- [HA inspect](../logs/task%205/docker_inspect_ha.log)
+- [S1 inspect](../logs/task%205/docker_inspect_s1.log)
+- [S2 inspect](../logs/task%205/docker_inspect_s2.log)
 
 And here is the link to the `docker ps` command :
-- [Docker ps](./logs/task%205/docker_ps.log)
+- [Docker ps](../logs/task%205/docker_ps.log)
 
 #### 5.2
 Here is the log file for the `/nodes` folder :
-- [HA inspect](./logs/task%205/nodes_folder.log)
+- [HA inspect](../logs/task%205/nodes_folder.log)
 
 #### 5.3
 Here is the log file for the `/nodes` folder :
-- [HA inspect](./logs/task%205/nodes_folder_without_s1.log)
+- [HA inspect](../logs/task%205/nodes_folder_without_s1.log)
 
 Here is the result of the configuration file :
-- [Config file without s1](./logs/task%205/haproxy_without_s1.cfg)
+- [Config file without s1](../logs/task%205/haproxy_without_s1.cfg)
 
 Finally, here is the output of the `docker ps` command :
-- [Config file without s1](./logs/task%205/docker_ps_without_s1.log)
+- [Config file without s1](../logs/task%205/docker_ps_without_s1.log)
 
 ### Difficulties
 #### Task 1
