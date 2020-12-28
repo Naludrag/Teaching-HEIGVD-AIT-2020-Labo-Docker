@@ -169,7 +169,7 @@ need more.
 
 #### 5.1
 Here are the config files for the different steps :
-- [No nodes](../logs/task%205/haproxy_nodes.cfg)
+- [No nodes](../logs/task%205/haproxy_nonodes.cfg)
 - [Only s1](../logs/task%205/haproxy_onlys1.cfg)
 - [All the nodes](../logs/task%205/haproxy_nodes.cfg)
 
