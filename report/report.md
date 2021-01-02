@@ -196,6 +196,29 @@ Here is the result of the configuration file :
 Finally, here is the output of the `docker ps` command :
 - [Config file without s1](../logs/task%205/docker_ps_without_s1.log)
 
+### Task 6 : Make the load balancer automatically reload the new configuration
+
+#### 6.1
+We started the HAProxy container with 5 webapp containers:  
+<img alt="HAProxy 1" src="./screens/T6_1_1.png">
+
+The `docker ps` logs can be found [here](../logs/task%206/docker_ps_1.log).
+
+After starting a new webapp container, we can see that we now have 6 nodes:  
+<img alt="HAProxy 2" src="./screens/T6_1_2.png">
+
+The `docker ps` logs can be found [here](../logs/task%206/docker_ps_2.log).
+
+After removing the s6 and s5 containers, we have the following result:  
+<img alt="HAProxy 3" src="./screens/T6_1_3.png">
+
+The `docker ps` logs can be found [here](../logs/task%206/docker_ps_3.log).
+
+#### 6.2
+We think that the solution used in this labo is pretty good, during our testing we didn't even feel the downtime when adding a new container on a web browser. We did feel it when removing containers, but that is due to the proxy not removing it immediately, not the reload in itself.
+
+The most logical improvement to this solution would be to achieve a zero downtime configuration update, this would prove quite useful in a high traffic environment.
+
 ### Difficulties
 #### Task 1
 In this task no difficulties were encountered.
