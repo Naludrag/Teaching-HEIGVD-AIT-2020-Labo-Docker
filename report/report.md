@@ -161,13 +161,45 @@ The logs of the serf.log file can be seen with the link below:
 ### Task 4: Use a template engine to easily generate configuration files
 
 #### 4.1
-- [Flattening docker images ](https://l10nn.medium.com/flattening-docker-images-bafb849912ff)
-- [Squashing docker images](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
-- [Slim down docker images ](https://blog.codacy.com/five-ways-to-slim-your-docker-images/)
-- [Docker images layers](https://docs.docker.com/storage/storagedriver/)
+The size of the container is key for our docker-machine performance. So how docker really build images and run multiple containers over it?
+Let's say that we have a Dockerfile that contains three instructions :
+```bash
+From ...
+Copy ...
+Run ...
+```
+By running the ``` docker build ```command, each of which creates a layer. Those layers are stacked on top of each other.  The final image contains only three layers in read-only mode.
+when we create a new container by executing the command ```docker run``` using the previous image, a thin writable container layer is added to allows read and write operations.
+Now, we give you another example, suppose that we have two Dokerfile contains the following instructions :
+Dockerfile (1):
+```bash
+RUN command 1
+RUN command 2
+RUN command 3
+```
+Dockerfile (2):
+```bash
+RUN command 1 && command 2 && command 3
+```
+As we explained previously the first Dockerfile will produce an image with three layers. On other hand, the second Dockerfile will give us an image with one layer , which is obviously lighter than the first one.
+But what happens if we run multiple containers ?.
+Remember each container has its own writable container layer, and all changes are stored in this layer. So many container can share the same image layer. If any container needs a file that existsin a lower layer within the image, docker uses a copy-on-write strategy that allows the container to copy the target file into his own writable layer.
+The good point about the presented mechanism that we save a lot of disk space , but the copy-on-write strategy reduces start-up time.
+
+##### Other techniques:
+* Image squashing:
+Many tools (docker-squash) allows organizing the image in logical layers. So we can control the structure of the image and avoid unnecessary layers.
+Sources :
+  *  [Docker Squashing from PyPi](https://pypi.org/project/docker-squash/)
+  *  [Squashing using Small Base Images ](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
+* Container flattening :
+The fact that a docker container can be exported and imported back again, allow us to flatten a Docker container. The result will be much smaller because this technique will not preserve the history of the container.
+Sources:
+  *  [Flatten a Docker container](https://tuhrig.de/flatten-a-docker-container-or-image/)
 
 #### 4.2
-Use the shared  files and layers  between these images.
+The idea to reduce the size of our images is to start from a base image that contains the most shared layers between those images. So each image will add only the necessary layer to the previous base image. In this project, we can build a base image to be used by all the web apps and the HAProxy by adding more layers.
+
 #### 4.3
 The /tmp/haproxy.cfg generated file :
 - [ha](../logs/task%204/haproxy_ha.cfg)
@@ -183,8 +215,7 @@ Docker inspect:
 - [s2](../logs/task%204/Docker_insp_s2.log)
 
 #### 4.4
-The containers use an overlay2 storage driver. When an existing file in a container is modified, the storage driver performs a copy-on-write operation. The specifics steps involved depend on the specific storage driver.
-need more.
+The containers use an overlay2 storage driver. When an existing file in a container is modified, the storage driver performs a copy-on-write operation. For this reason, every container use many new or repetitive layer which will increase the used disk space. We can solve this by performing one of the previously discussed strategies like squashing or flattening.
 
 <a name="task_5"></a>
 ### Task 5 : Generate a new load balancer configuration when membership changes
