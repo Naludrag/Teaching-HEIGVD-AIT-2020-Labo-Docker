@@ -5,7 +5,13 @@
 
 ### Introduction
 
-In this laboratory, we will configure a load-balancer with different configuration like sticky sessions or drain mode. We will also look at the results with the different modifications. We will also look at what happens when a server is lower than another. At the end, we will look at two new algorithms to choose a node and compare them by showing results and choose the most suitable for the laboratory.
+In this laboratory, we will configure a load-balancer with dynamic scaling of servers. The goal of this lab is to become familiar with lightweight process supervision for Docker, understanding the concepts of dynamic scaling and make a decentralized management of web server instances.
+
+In this report you will find the answers to the different questions and the difficulties encountered throughout the laboratory.
+
+### Table of content
+1. [Task 0 : Identify issues and install the tools](#Task-0-:-Identify-issues-and-install-the-tools)
+1. [Task 1 : Add a process supervisor to run several processes](#Task-1-:-Add-a-process-supervisor-to-run-several-processes)
 
 
 ### Task 0 : Identify issues and install the tools
@@ -85,7 +91,7 @@ On the screenshot shown above we can see the 2 nodes that were started s1 and s2
 Here is our URL :
 https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 
-### Task 1 : Identify issues and install the tools
+### Task 1 : Add a process supervisor to run several processes
 
 #### 1.1
 <img alt="Test 1" src="./screens/T1_s1.png">
