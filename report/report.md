@@ -189,11 +189,13 @@ The good point about the presented mechanism that we save a lot of disk space , 
 
 ##### Other techniques:
 * Image squashing:
+
 Many tools (docker-squash) allows organizing the image in logical layers. So we can control the structure of the image and avoid unnecessary layers.
 Sources :
   *  [Docker Squashing from PyPi](https://pypi.org/project/docker-squash/)
   *  [Squashing using Small Base Images ](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
 * Container flattening :
+
 The fact that a docker container can be exported and imported back again, allow us to flatten a Docker container. The result will be much smaller because this technique will not preserve the history of the container.
 Sources:
   *  [Flatten a Docker container](https://tuhrig.de/flatten-a-docker-container-or-image/)
