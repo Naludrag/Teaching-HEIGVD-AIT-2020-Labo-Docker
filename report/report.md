@@ -205,7 +205,7 @@ And here is the link to the `docker ps` command :
 
 #### 5.2
 Here is the log file for the `/nodes` folder :
-- [HA inspect](../logs/task%205/nodes_folder.log)
+- [Node Folder](../logs/task%205/nodes_folder.log)
 
 #### 5.3
 Here is the log file for the `/nodes` folder :
@@ -255,7 +255,12 @@ In this task no difficulties were encountered.
 #### Task 5
 In this task no difficulties were encountered.
 
+#### Task 6
+In this task no difficulties were encountered.
+
 ### Conclusion
-To conclude, we found this laboratory interesting because we could practice the theory seen in the course. It was also interesting to see what can happen if a load-balancer has a slower server or if the session stickiness is not enabled. Seeing multiple balancing strategies and to choose between them is also an interesting point in the laboratory.
+To conclude, we found this laboratory interesting because we could practice the theory seen in the course. It was also interesting to see new technologies such as Serf, s6 and Handlebars and understanding their utility in our lab and in other places.
+
+It was great to see the application becoming more and more dynamic after every task.
 
 Finally, we are happy with the result that we have and we think that we completed the laboratory successfully.
