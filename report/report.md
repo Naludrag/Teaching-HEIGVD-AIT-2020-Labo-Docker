@@ -171,6 +171,7 @@ Run ...
 By running the ``` docker build ```command, each of which creates a layer. Those layers are stacked on top of each other.  The final image contains only three layers in read-only mode.
 when we create a new container by executing the command ```docker run``` using the previous image, a thin writable container layer is added to allows read and write operations.
 Now, we give you another example, suppose that we have two Dokerfile contains the following instructions :
+
 Dockerfile (1):
 ```bash
 RUN command 1
