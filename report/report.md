@@ -192,13 +192,13 @@ The good point about the presented mechanism that we save a lot of disk space , 
 
 Many tools (docker-squash) allows organizing the image in logical layers. So we can control the structure of the image and avoid unnecessary layers.
 Sources :
-  *  [Docker Squashing from PyPi](https://pypi.org/project/docker-squash/)
-  *  [Squashing using Small Base Images ](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
+      *  [Docker Squashing from PyPi](https://pypi.org/project/docker-squash/)
+      *  [Squashing using Small Base Images ](http://jasonwilder.com/blog/2014/08/19/squashing-docker-images/)
 * Container flattening :
 
 The fact that a docker container can be exported and imported back again, allow us to flatten a Docker container. The result will be much smaller because this technique will not preserve the history of the container.
 Sources:
-  *  [Flatten a Docker container](https://tuhrig.de/flatten-a-docker-container-or-image/)
+     *  [Flatten a Docker container](https://tuhrig.de/flatten-a-docker-container-or-image/)
 
 #### 4.2
 The idea to reduce the size of our images is to start from a base image that contains the most shared layers between those images. So each image will add only the necessary layer to the previous base image. In this project, we can build a base image to be used by all the web apps and the HAProxy by adding more layers.
