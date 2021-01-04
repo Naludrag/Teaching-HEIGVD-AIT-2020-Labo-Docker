@@ -161,7 +161,7 @@ The logs of the serf.log file can be seen with the link below:
 ### Task 4: Use a template engine to easily generate configuration files
 
 #### 4.1
-The size of the container is key for our docker-machine performance. So how docker really build images and run multiple containers over it?
+The size of the container is key for our docker engine performance. So how docker really build images and run multiple containers over it?
 Let's say that we have a Dockerfile that contains three instructions :
 ```bash
 From ...
