@@ -11,7 +11,13 @@ In this report you will find the answers to the different questions and the diff
 
 ### Table of content
 1. [Task 0 : Identify issues and install the tools](#task_0)
-1. [Task 1 : Add a process supervisor to run several processes](#task_1)
+2. [Task 1 : Add a process supervisor to run several processes](#task_1)
+3. [Task 2: Add a tool to manage membership in the web server cluster](#task_2)
+4. [Task 3: React to membership changes](#task_3)
+5. [Task 4: Use a template engine to easily generate configuration files](#task_4)
+6. [Task 5: Generate a new load balancer configuration when membership changes](#task_5)
+7. [Task 6: Make the load balancer automatically reload the new configuration](#task_6)
+8. [Difficulties](#difficulties)
 
 <a name="task_0"></a>
 ### Task 0 : Identify issues and install the tools
@@ -108,6 +114,7 @@ Docker containers have to run a foreground process to be kept alive. And so, S6 
 
 In our laboratory, it will be interesting to have such a tool because we could restart the haproxy process to have it update the init script to add new servers.
 
+<a name="task_2"></a>
 ### Task 2 : Add a tool to manage membership in the web server cluster
 
 #### 2.1
@@ -132,6 +139,7 @@ This messages are always sent with a Lamport clock to maintain some notion of me
 
 If we want to find other solutions than Serf we could use for instance ZooKeeper or doozerd. But in some cases this solutions can be less interesting as for instance ZooKeeper. ZooKeeper cannot be used as a tool and a lot of the times developers have to use libraries to build features that the need.
 
+<a name="task_3"></a>
 ### Task 3 : React to membership changes
 
 #### 3.1
@@ -145,6 +153,7 @@ Here are the logs for this step :
 The logs of the serf.log file can be seen with the link below:
 - [HAProxy](../logs/task%203/serf.log)
 
+<a name="task_4"></a>
 ### Task 4: Use a template engine to easily generate configuration files
 
 #### 4.1
@@ -173,6 +182,7 @@ Docker inspect:
 The containers use an overlay2 storage driver. When an existing file in a container is modified, the storage driver performs a copy-on-write operation. The specifics steps involved depend on the specific storage driver.
 need more.
 
+<a name="task_5"></a>
 ### Task 5 : Generate a new load balancer configuration when membership changes
 
 #### 5.1
@@ -203,6 +213,7 @@ Here is the result of the configuration file :
 Finally, here is the output of the `docker ps` command :
 - [Config file without s1](../logs/task%205/docker_ps_without_s1.log)
 
+<a name="task_6"></a>
 ### Task 6 : Make the load balancer automatically reload the new configuration
 
 #### 6.1
@@ -226,6 +237,7 @@ We think that the solution used in this labo is pretty good, during our testing 
 
 The most logical improvement to this solution would be to achieve a zero downtime configuration update, this would prove quite useful in a high traffic environment.  
 
+<a name="difficulties"></a>
 ### Difficulties
 #### Task 1
 In this task no difficulties were encountered.
