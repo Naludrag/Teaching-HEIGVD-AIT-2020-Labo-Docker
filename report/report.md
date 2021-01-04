@@ -10,10 +10,10 @@ In this laboratory, we will configure a load-balancer with dynamic scaling of se
 In this report you will find the answers to the different questions and the difficulties encountered throughout the laboratory.
 
 ### Table of content
-1. [Task 0 : Identify issues and install the tools](#Task-0-:-Identify-issues-and-install-the-tools)
-1. [Task 1 : Add a process supervisor to run several processes](#Task-1-:-Add-a-process-supervisor-to-run-several-processes)
+1. [Task 0 : Identify issues and install the tools](#task_0)
+1. [Task 1 : Add a process supervisor to run several processes](#task_1)
 
-
+<a name="task_0"></a>
 ### Task 0 : Identify issues and install the tools
 #### M1 : Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?
 The main problem is that we will use the same amount of servers every time of the year. For instance, we could have something more intelligent that will create a new server when we have a lot of incoming requests and shut down some servers when there is not much work to do. Currently, all the servers in the infrastructure are static and we have defined the amount of servers desired, two s1 and s2.
@@ -92,6 +92,7 @@ On the screenshot shown above we can see the 2 nodes that were started s1 and s2
 Here is our URL :
 https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 
+<a name="task_1"></a>
 ### Task 1 : Add a process supervisor to run several processes
 
 #### 1.1
