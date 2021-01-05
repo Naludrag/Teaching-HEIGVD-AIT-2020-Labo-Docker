@@ -281,7 +281,9 @@ The `docker ps` logs can be found [here](../logs/task%206/docker_ps_3.log).
 #### 6.2
 We think that the solution used in this labo is pretty good, during our testing we didn't even feel the downtime when adding a new container on a web browser. We did feel it when removing containers, but that is due to the proxy not removing it immediately, not the reload in itself.
 
-The most logical improvement to this solution would be to achieve a zero downtime configuration update, this would prove quite useful in a high traffic environment.  
+The most logical improvement to this solution would be to achieve a zero downtime configuration update, this would prove quite useful in a high traffic environment.
+
+Another improvement would be to automatically add or remove web servers based on the load, this would improve the performance, as well as the costs. In order to completely automate the deployment of those servers, an external service like Kubernetes could be used.
 
 <a name="difficulties"></a>
 ### Difficulties
