@@ -136,9 +136,9 @@ All the logs for this point are in the folder logs but here is the link to the f
 - [S2](../logs/task%202/s2.log)
 
 #### 2.2
-In the current solution we could have a problem because all the nodes have to be registered through the HAProxy. Because of that, if the HAProxy is not up new machines could not join the cluster and that is not what the Serf mind set is for.
+In the current solution, we could have a problem because all the nodes have to be registered through the HAProxy. Because of that, if the HAProxy is not up new machines could not join the cluster and that is not what the Serf mindset is for.
 
-The Serf mind set is to join a cluster through multiple machines and not only one.
+The Serf mindset is to join a cluster through multiple machines and not only one.
 
 #### 2.3
 The Serf agent will try to join the cluster trough the load-balancer. If the cluster is not created, it will create it and in reverse if it exists, it will join it. This step will only succeed if the ha container is accessible, otherwise the startup of the Serf agent will fail.
@@ -149,7 +149,7 @@ If a new node has joined the cluster or if it leave the cluster, Serf will use t
 
 This messages are always sent with a Lamport clock to maintain some notion of messages ordering.
 
-If we want to find other solutions than Serf we could use for instance ZooKeeper or doozerd. But in some cases this solutions can be less interesting as for instance ZooKeeper. ZooKeeper cannot be used as a tool and a lot of the times developers have to use libraries to build features that they need.
+If we want to find other solutions than Serf we could use for instance ZooKeeper or doozerd. But in some cases this solutions can be less interesting as for instance ZooKeeper. ZooKeeper cannot be used as a tool and a lot of the times developers have to use libraries to build features that they need so you have to configure a bit more than Serf.
 
 <a name="task_3"></a>
 ### Task 3 : React to membership changes
