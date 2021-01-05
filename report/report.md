@@ -184,7 +184,7 @@ RUN command 1 && command 2 && command 3
 ```
 As we explained previously the first Dockerfile will produce an image with three layers. On other hand, the second Dockerfile will give us an image with one layer , which is obviously lighter than the first one.
 But what happens if we run multiple containers ?.
-Remember each container has its own writable container layer, and all changes are stored in this layer. So many container can share the same image layer. If any container needs a file that existsin a lower layer within the image, docker uses a copy-on-write strategy that allows the container to copy the target file into his own writable layer.
+Remember each container has its own writable container layer, and all changes are stored in this layer. So many container can share the same image layer. If any container needs a file that exists in a lower layer within the image, docker uses a copy-on-write strategy that allows the container to copy the target file into his own writable layer.
 The good point about the presented mechanism that we save a lot of disk space , but the copy-on-write strategy reduces start-up time.
 
 ##### Other techniques:
@@ -273,7 +273,9 @@ The `docker ps` logs can be found [here](../logs/task%206/docker_ps_3.log).
 #### 6.2
 We think that the solution used in this labo is pretty good, during our testing we didn't even feel the downtime when adding a new container on a web browser. We did feel it when removing containers, but that is due to the proxy not removing it immediately, not the reload in itself.
 
-The most logical improvement to this solution would be to achieve a zero downtime configuration update, this would prove quite useful in a high traffic environment.  
+The most logical improvement to this solution would be to achieve a zero downtime configuration update, this would prove quite useful in a high traffic environment.
+
+Another improvement would be to automatically add or remove web servers based on the load, this would improve the performance, as well as the costs. In order to completely automate the deployment of those servers, an external service like Kubernetes could be used.
 
 <a name="difficulties"></a>
 ### Difficulties
