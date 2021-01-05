@@ -97,9 +97,9 @@ No, the current solution does not allow a container to handle multiple processes
 To reach the goal of running multiple processes we can add a process supervisor to the container. This will handle multiple processes inside a container and with that we can define which process could kill the container if it fails or those that do not kill the container. Later in the lab, you will see a process supervisor named `S6`.
 
 #### M6 : What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?
-<!-- With the current configuration, we can only add so many web server nodes until the HA proxy can not handle the load anymore.  -->
+In the current configuration when we add a new node nothing happens the HAproxy does not add the server to his configuration file. For that we have to do the steps shoed in the response of the question `M3`. It would be create to make this steps automatically.
 
-We could think of a solution where we use a template for a node and use a script to change the configuration of the haproxy container directly.
+We could think of a solution where we use a template for a node and use a script to change the configuration of the haproxy container directly and restart the haproxy when a new node is detected in the cluster.
 
 #### 0.1
 <img alt="Test 1" src="./screens/T0_s1.png">
@@ -119,7 +119,7 @@ https://github.com/Naludrag/Teaching-HEIGVD-AIT-2020-Labo-Docker
 We can see that this task has been done successfully. The 2 nodes are still visible and the haproxy accessible.
 
 #### 1.2
-In this task we installed a init system to be able to execute multiple process in a docker container. The basic idea of Docker is to run one process per container but with S6 we can manage and supervise multiple processes. With S6 we can choose which process to restart and we can prevent our container from dying if the main process die for instance. We could also choose which process, if it fails, shuts down the container.  
+In this task we installed a init system to be able to execute multiple process in a docker container. The basic idea of Docker is to run one process per container but with S6 we can manage and supervise multiple processes in a container. With S6 we can choose which process to restart and we can prevent our container from dying if the main process die for instance. We could also choose which process, if it fails, shuts down the container.  
 With this service we do not have "one process per container" but more "one thing per container".
 
 Docker containers have to run a foreground process to be kept alive. And so, S6 will run as the foreground process and let the other processes run as background processes. With that, if a process fails the container will not die.
