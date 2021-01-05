@@ -64,8 +64,16 @@ haproxy:
             - WEBAPP_3_IP=${WEBAPP_3_IP}
 ```
 
-And then in the haproxy file we add a new variable for the new server :
+Then we have to add the following lines in the `.env` file environment :
+```
+...
+WEBAPP_3_NAME=s3
+...
+WEBAPP_3_IP=192.168.42.33
+...
+```
 
+And then in the haproxy configuration file we add a new variable for the new server :
 ```
 # Define the list of nodes to be in the balancing mechanism
 # http://cbonte.github.io/haproxy-dconv/2.2/configuration.html#4-server
@@ -81,7 +89,7 @@ As shown in the previous answer, the configuration of a new node is relatively l
 
 #### M4 : You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?
 
-We could think, as discussed in the previous question, of an application or service that will handle the new hosts and send a message when they are deployed or the fact that they are leaving, to the load-balancer. With that we could change the configuration file of the haproxy dynamically and restart it to handle the new configuration.  
+We could think, as discussed in the previous question, of an application or service that will handle the new hosts and send a message when they are deployed or the fact that they are leaving, to the load-balancer. With that we could change the configuration file of the haproxy dynamically and restart it to handle the new configuration and the new server.  
 
 #### M5 : Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?
 No, the current solution does not allow a container to handle multiple processes. This is because Docker has defined that a container is a process, hence only one process can be run by a container.
@@ -161,14 +169,14 @@ The logs of the serf.log file can be seen with the link below:
 ### Task 4: Use a template engine to easily generate configuration files
 
 #### 4.1
-The size of the container is key for our docker engine performance. So how docker really build images and run multiple containers over it?
+The size of the container is the key for our docker engine performance. So how docker really build images and run multiple containers over it?
 Let's say that we have a Dockerfile that contains three instructions :
 ```bash
 From ...
 Copy ...
 Run ...
 ```
-By running the ``` docker build ```command, each of which creates a layer. Those layers are stacked on top of each other.  The final image contains only three layers in read-only mode.
+By running the ``` docker build ``` command, each of which creates a layer. Those layers are stacked on top of each other.  The final image contains only three layers in read-only mode.
 when we create a new container by executing the command ```docker run``` using the previous image, a thin writable container layer is added to allows read and write operations.
 Now, we give you another example, suppose that we have two Dokerfile contains the following instructions :
 
@@ -184,8 +192,8 @@ RUN command 1 && command 2 && command 3
 ```
 As we explained previously the first Dockerfile will produce an image with three layers. On other hand, the second Dockerfile will give us an image with one layer , which is obviously lighter than the first one.
 But what happens if we run multiple containers ?.
-Remember each container has its own writable container layer, and all changes are stored in this layer. So many container can share the same image layer. If any container needs a file that existsin a lower layer within the image, docker uses a copy-on-write strategy that allows the container to copy the target file into his own writable layer.
-The good point about the presented mechanism that we save a lot of disk space , but the copy-on-write strategy reduces start-up time.
+Remember each container has its own writable container layer, and all changes are stored in this layer. So many container can share the same image layer. If any container needs a file that exists in a lower layer within the image, docker uses a copy-on-write strategy that allows the container to copy the target file into his own writable layer.
+The good point about the presented mechanism is that we save a lot of disk space, but the copy-on-write strategy reduces start-up time.
 
 ##### Other techniques:
 ###### Image squashing:
@@ -277,20 +285,7 @@ The most logical improvement to this solution would be to achieve a zero downtim
 
 <a name="difficulties"></a>
 ### Difficulties
-#### Task 1
-In this task no difficulties were encountered.
-
-#### Task 2
-In this task no difficulties were encountered.
-
-#### Task 3
-In this task no difficulties were encountered.
-
-#### Task 5
-In this task no difficulties were encountered.
-
-#### Task 6
-In this task no difficulties were encountered.
+In the end, no difficulties were present throughout the laboratory. So we did not have something to write in this section.
 
 ### Conclusion
 To conclude, we found this laboratory interesting because we could practice the theory seen in the course. It was also interesting to see new technologies such as Serf, s6 and Handlebars and understanding their utility in our lab and in other places.
